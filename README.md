@@ -29,11 +29,10 @@ Players join a room, see each other as capsules, chat, and vote to restart the g
 
 - An Android game with **MelonLoader** installed (IL2CPP).
 - A relay server that everyone can reach (see [Relay](#relay)).
-- To build: the .NET 8 SDK and the reference DLLs from your own game install.
 
 ## Install
 
-1. Build `PhoneMP.dll` (see [Build](#build)) or download it from the Releases page.
+1. Download `PhoneMP.dll` from the Releases page.
 2. Copy it into the game's MelonLoader `Mods` folder, for example:
 
    ```
@@ -82,28 +81,6 @@ Every packet starts with magic byte `0x47`, then a type byte:
 | `3`  | Room list reply                                                     |
 | `5`  | Chat: same header as position, then the message                     |
 
-## Build
-
-The project targets .NET 8 and expects the reference DLLs in a `refs/` folder next to `PhoneMP.csproj`:
-
-`MelonLoader.dll`, `Il2CppInterop.Runtime.dll`, `Il2Cppmscorlib.dll`, `Assembly-CSharp.dll`, `UnityEngine.CoreModule.dll`, `UnityEngine.PhysicsModule.dll`, `UnityEngine.UI.dll`, `UnityEngine.UIModule.dll`, `UnityEngine.TextRenderingModule.dll`, `UnityEngine.InputLegacyModule.dll`
-
-Take these from your own MelonLoader install (the generated IL2CPP assemblies). Then:
-
-```bash
-dotnet build -c Release
-```
-
-The result is `bin/Release/net8.0/PhoneMP.dll`.
-
-### Building on Android (Termux)
-
-```bash
-proot-distro login ubuntu --bind ~/storage/downloads:/mnt/dl --bind ~/storage/shared:/mnt/sd
-cd /mnt/dl/PhoneMP
-dotnet build -c Release
-```
-
 ## Publishing note
 
 The `refs/` DLLs come from the game and MelonLoader, so they are not yours to redistribute. Do not commit them. A suggested `.gitignore`:
@@ -114,7 +91,6 @@ obj/
 refs/
 ```
 
-Anyone cloning the repo supplies their own `refs/` folder.
 
 ## Project layout
 
