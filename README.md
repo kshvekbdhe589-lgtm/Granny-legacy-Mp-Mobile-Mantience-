@@ -58,6 +58,8 @@ Change `Server` to your own relay address if you host one.
 
 `relay.py` is a small UDP relay with no dependencies beyond Python 3. It forwards position and chat packets between players in the same room.
 
+**Download:** [relay.py](https://github.com/kshvekbdhe589-lgtm/Granny-legacy-Mp-Mobile-Mantience-/releases/download/v0.3.0-beta/relay.py)
+
 ```bash
 python3 relay.py          # listens on UDP 47777
 python3 relay.py 12345    # or choose a port
@@ -66,7 +68,7 @@ python3 relay.py 12345    # or choose a port
 Notes:
 
 - The first player in a room is its owner, and only the owner's **Public** setting decides whether the room is listed.
-- A room holds up to 16 players. A player who is silent for 10 seconds is dropped.
+- A room holds up to 16 players. A player who stops sending data for 10 seconds (for example, they closed the game or lost connection) is dropped.
 - The relay needs to be reachable from the internet if players are on different networks. Run it on a server with an open UDP port, or put a UDP tunnel such as [playit.gg](https://playit.gg) in front of it.
 - Running the relay in Termux works. Run `termux-wake-lock` so Android does not stop it.
 
